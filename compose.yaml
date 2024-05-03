@@ -1,0 +1,48 @@
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./laravel-app:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+      - "5173:5173"
+    networks:
+      - internal
+  php:
+    build: .
+    expose:
+      - 9000
+    volumes:
+      - ./laravel-app:/var/www/html
+    networks:
+      - internal
+  db:
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db_php
+      - MYSQL_USER=amttmg
+      - MYSQL_PASSWORD=password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - internal
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOSTS=db
+      - PMA_PORT=3307
+      - PMA_USER=amttmg
+      - PMA_PASSWORD=password
+      - PMA_ARBITRARY=1
+    networks:
+      - internal
+networks:
+  internal:
+volumes:
+  mysql-data:
