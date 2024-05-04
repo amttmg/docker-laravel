@@ -2,7 +2,8 @@ FROM php:8.2-fpm
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-enable mysqli
 
-RUN apt-get update && apt-get install zip git -y
+#GIT and ZIP is require for composer
+RUN apt-get update && apt-get install zip git -y 
 
 
 #For Node
