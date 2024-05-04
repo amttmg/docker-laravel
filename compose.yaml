@@ -8,8 +8,9 @@ services:
       - "8080:80"
     networks:
       - internal
-  php:
+  workspace:
     build: .
+    container_name: workspace
     volumes:
       - ./laravel-app:/var/www/html
     networks:
