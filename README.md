@@ -1,3 +1,5 @@
+Run the following commands:
+
 - `git clone https://github.com/amttmg/docker-laravel.git`
 - `cd docker-laravel`
 - `docker compose up -d --build`
@@ -8,3 +10,6 @@
 - `php artisan key:generate`
 - `npm install`
 - `npm run build`
+
+  Application: <a href="http://localhost:8080" target="_blank">localhost:8080</a> <br>
+  Phpmyadmin: <a href="http://localhost:8081" target="_blank">localhost:8081</a>
