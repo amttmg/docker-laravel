@@ -2,6 +2,8 @@ FROM php:8.2-fpm
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-enable mysqli
 
+RUN apt-get update && apt-get install zip
+
 
 #For Node
 ENV NODE_VERSION=16.13.0
